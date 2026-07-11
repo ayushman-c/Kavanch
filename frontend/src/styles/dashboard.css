@@ -1,0 +1,275 @@
+/* Status Cards */
+.status-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.status-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--card-accent);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.status-card:hover {
+  background: var(--surface-alt);
+}
+
+.status-card__icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.status-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.status-card__value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.status-card__label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-card__detail {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-header__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.section-header__count {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.section-header__badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--success);
+  background: var(--success-bg);
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+/* Helmet Table */
+.helmet-table-wrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.helmet-table-container {
+  overflow-x: auto;
+}
+
+.helmet-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.helmet-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+}
+
+.helmet-table td {
+  padding: 12px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.helmet-table tbody tr:hover {
+  background: var(--surface-alt);
+}
+
+.helmet-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.helmet-table__id {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.helmet-table__time {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.helmet-table__empty {
+  text-align: center;
+  padding: 32px 12px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge--online {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.status-badge--offline {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-muted);
+}
+
+.status-badge--error {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* Battery Indicator */
+.battery-indicator {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.battery-indicator--low {
+  color: var(--danger);
+}
+
+/* Live Telemetry */
+.live-telemetry {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.live-telemetry__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.live-telemetry__empty {
+  text-align: center;
+  padding: 32px 12px;
+  color: var(--text-dim);
+}
+
+.live-telemetry__hint {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+
+.telemetry-entry {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+}
+
+.telemetry-entry__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.telemetry-entry__helmet {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.telemetry-entry__time {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.telemetry-entry__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.telemetry-entry__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.telemetry-entry__label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.telemetry-entry__value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* Dashboard grid for two-column layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

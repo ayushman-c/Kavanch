@@ -1,0 +1,290 @@
+/* ============================
+   Phase 3 — Analytics + Polish
+   ============================ */
+
+/* Analytics Page Layout */
+.analytics-page {
+  min-height: 100%;
+}
+
+.analytics-page__charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .analytics-page__charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Analytics Overview Grid */
+.analytics-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+/* Chart Card */
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 0;
+}
+
+.chart-card__subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.chart-card__meta {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.chart-card__pies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.chart-card__pie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Date Range Filter */
+.date-range-filter {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.date-range-filter__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.date-range-filter__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.date-range-filter__input {
+  padding: 8px 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 13px;
+  min-width: 140px;
+}
+
+.date-range-filter__input:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.date-range-filter__btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background var(--transition), opacity var(--transition);
+}
+
+.date-range-filter__btn--apply {
+  background: var(--primary);
+  color: #fff;
+}
+
+.date-range-filter__btn--apply:hover {
+  background: var(--primary-hover);
+}
+
+.date-range-filter__btn--clear {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.date-range-filter__btn--clear:hover {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+/* Error Boundary */
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background);
+  padding: 24px;
+}
+
+.error-boundary__content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.error-boundary__icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.error-boundary__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.error-boundary__message {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.error-boundary__btn {
+  padding: 10px 24px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background var(--transition);
+}
+
+.error-boundary__btn:hover {
+  background: var(--primary-hover);
+}
+
+/* UI Polish — Focus indicators */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* UI Polish — transitions on interactive elements */
+button,
+a,
+.sidebar__link,
+.helmet-table__row,
+.status-card,
+.sensor-card,
+.alert-card,
+.emergency-card {
+  transition: background var(--transition), border-color var(--transition), opacity var(--transition);
+}
+
+/* UI Polish — table accessibility */
+.helmet-table th {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  z-index: 1;
+}
+
+/* UI Polish — scrollable containers */
+.helmet-table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* UI Polish — better card consistency */
+.status-card,
+.chart-card,
+.helmet-table-wrapper,
+.live-telemetry,
+.dashboard-panel,
+.helmet-info,
+.helmet-map-container,
+.date-range-filter {
+  box-shadow: var(--shadow);
+}
+
+/* UI Polish — loading animation refinement */
+.loading-state__spinner {
+  border-width: 3px;
+}
+
+/* Accessibility — reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Recharts overrides */
+.recharts-default-tooltip {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+}
+
+.recharts-legend-item-text {
+  color: var(--text-muted) !important;
+  font-size: 12px;
+}
+
+.recharts-text {
+  fill: var(--text-muted) !important;
+  font-size: 12px !important;
+}
+
+/* Ensure chart tooltips are readable */
+.recharts-tooltip-wrapper {
+  z-index: 100;
+}
+
+/* Keyboard nav for table rows */
+.helmet-table__row:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+/* Smooth scrollbar across all scrollable areas */
+.live-telemetry__list,
+.telemetry-history,
+.dashboard-panel__list,
+.alert-list,
+.emergency-list,
+.helmet-table-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}

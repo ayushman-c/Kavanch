@@ -1,0 +1,471 @@
+/* Alert Card */
+.alert-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--text-dim);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  transition: background var(--transition);
+}
+
+.alert-card:hover {
+  background: var(--surface);
+}
+
+.alert-card--low {
+  border-left-color: var(--success);
+}
+
+.alert-card--medium {
+  border-left-color: var(--warning);
+}
+
+.alert-card--high {
+  border-left-color: var(--danger);
+}
+
+.alert-card--critical {
+  border-left-color: var(--danger);
+  border-left-width: 4px;
+}
+
+.alert-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.alert-card__type {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: capitalize;
+}
+
+.alert-card__message {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.alert-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.alert-card__helmet {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.alert-card__time {
+  color: var(--text-dim);
+}
+
+/* Alert List */
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Emergency Card */
+.emergency-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--text-dim);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+
+.emergency-card--active {
+  border-left-color: var(--danger);
+  border-left-width: 4px;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.emergency-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.emergency-card__type {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.emergency-card__body {
+  margin-bottom: 8px;
+}
+
+.emergency-card__helmet {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.emergency-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Emergency List */
+.emergency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Helmet Info */
+.helmet-info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.helmet-info__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.helmet-info__id {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.helmet-info__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.helmet-info__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.helmet-info__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.helmet-info__value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Sensor Grid */
+.sensor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sensor-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+
+.sensor-card:hover {
+  background: var(--surface-alt);
+}
+
+.sensor-card__icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.sensor-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sensor-card__value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  white-space: nowrap;
+}
+
+.sensor-card__value--small {
+  font-size: 13px;
+}
+
+.sensor-card__unit {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.sensor-card__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Map */
+.helmet-map-container {
+  height: 300px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.helmet-map {
+  height: 100%;
+  width: 100%;
+}
+
+.helmet-map-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.helmet-map-placeholder__hint {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.map-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+}
+
+.map-popup strong {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* Helmet Details Page Layout */
+.helmet-details__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.helmet-details__section {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+  .helmet-details__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Telemetry History */
+.telemetry-history {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Dashboard Panel (alerts/emergencies preview) */
+.dashboard-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.dashboard-panel__list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Loading, Error, Empty States */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.loading-state__spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-state__message {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.error-state__message {
+  font-size: 14px;
+  color: var(--danger);
+  margin-bottom: 12px;
+}
+
+.error-state__retry {
+  padding: 8px 20px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 13px;
+  transition: background var(--transition);
+}
+
+.error-state__retry:hover {
+  background: var(--primary-hover);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.empty-state__icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.empty-state__message {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+/* Alerts / Emergencies Toolbar */
+.alerts-toolbar,
+.emergencies-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.alerts-toolbar__count,
+.emergencies-toolbar__count {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.alerts-toolbar__refresh,
+.emergencies-toolbar__refresh {
+  padding: 6px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: background var(--transition);
+}
+
+.alerts-toolbar__refresh:hover,
+.emergencies-toolbar__refresh:hover {
+  background: var(--surface-alt);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination__info {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Clickable table rows */
+.helmet-table__row {
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.helmet-table__row:hover {
+  background: var(--surface-alt) !important;
+}
+
+.helmet-table__row:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
