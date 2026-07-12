@@ -129,6 +129,20 @@ export function useDashboard() {
     .map((h) => h.activeEmergency)
     .slice(0, 5);
 
+  const helmetsWithTelemetry = liveData.filter((h) => h.currentTelemetry);
+
+  const avgGasLevel = helmetsWithTelemetry.length
+    ? Math.round(helmetsWithTelemetry.reduce((s, h) => s + (h.currentTelemetry.gasLevel ?? 0), 0) / helmetsWithTelemetry.length)
+    : null;
+
+  const avgHeartRate = helmetsWithTelemetry.length
+    ? Math.round(helmetsWithTelemetry.reduce((s, h) => s + (h.currentTelemetry.heartRate ?? 0), 0) / helmetsWithTelemetry.length)
+    : null;
+
+  const avgBattery = liveData.filter((h) => h.batteryLevel != null).length
+    ? Math.round(liveData.reduce((s, h) => s + (h.batteryLevel ?? 0), 0) / liveData.filter((h) => h.batteryLevel != null).length)
+    : null;
+
   const summaryCardsData = health
     ? {
         totalHelmets: liveData.length,
@@ -137,6 +151,9 @@ export function useDashboard() {
         totalAlerts: '—',
         activeEmergencies: activeEmergenciesList.length,
         totalEmergencies: '—',
+        averageGasLevel: avgGasLevel,
+        averageHeartRate: avgHeartRate,
+        averageBatteryLevel: avgBattery,
         database: health.database,
         server: health.server,
       }

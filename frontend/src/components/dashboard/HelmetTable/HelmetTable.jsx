@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Search, Filter } from 'lucide-react';
+import { Search, Filter, AlertTriangle } from 'lucide-react';
 
 function HelmetTable({ helmets, onHelmetClick }) {
   const rows = helmets || [];
@@ -28,9 +28,13 @@ function HelmetTable({ helmets, onHelmetClick }) {
             <tr>
               <th>Helmet ID</th>
               <th>Worker</th>
-              <th>Gas Level</th>
+              <th>LPG (MQ6)</th>
+              <th>Methane (MQ4)</th>
+              <th>Hydrogen (MQ8)</th>
+              <th>Humidity</th>
               <th>Heart Rate</th>
               <th>Temperature</th>
+              <th>SOS</th>
               <th>Battery</th>
               <th>Status</th>
               <th>Last Seen</th>
@@ -39,7 +43,7 @@ function HelmetTable({ helmets, onHelmetClick }) {
           <tbody>
             {rows.length === 0 ? (
               <tr>
-                <td colSpan={8} className="table__empty">No helmets registered yet</td>
+                <td colSpan={12} className="table__empty">No helmets registered yet</td>
               </tr>
             ) : (
               rows.map((helmet) => (
@@ -52,10 +56,23 @@ function HelmetTable({ helmets, onHelmetClick }) {
                   onKeyDown={(e) => e.key === 'Enter' && onHelmetClick?.(helmet.helmetId)}
                 >
                   <td className="table__cell-mono" style={{ fontWeight: 600 }}>{helmet.helmetId || '—'}</td>
-                  <td>{helmet.minerName || '—'}</td>
-                  <td className="table__cell-mono">{helmet.currentTelemetry?.gasLevel ?? '—'}</td>
+                  <td>{helmet.minerName || helmet.currentTelemetry?.worker || '—'}</td>
+                  <td className="table__cell-mono">{helmet.currentTelemetry?.mq6 ?? '—'}</td>
+                  <td className="table__cell-mono">{helmet.currentTelemetry?.mq4 ?? '—'}</td>
+                  <td className="table__cell-mono">{helmet.currentTelemetry?.mq8 ?? '—'}</td>
+                  <td className="table__cell-mono">{helmet.currentTelemetry?.humidity ?? '—'}%</td>
                   <td className="table__cell-mono">{helmet.currentTelemetry?.heartRate ?? '—'}</td>
                   <td className="table__cell-mono">{helmet.currentTelemetry?.bodyTemperature ?? '—'}°C</td>
+                  <td>
+                    {helmet.currentTelemetry?.sos ? (
+                      <span className="badge badge--danger" style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                        <AlertTriangle size={12} />
+                        SOS
+                      </span>
+                    ) : (
+                      <span style={{ color: 'var(--text-muted)', fontSize: 'var(--text-xs)' }}>—</span>
+                    )}
+                  </td>
                   <td className="table__cell-mono">
                     <span style={{ color: (helmet.batteryLevel ?? 100) <= 10 ? 'var(--danger)' : undefined }}>
                       {helmet.batteryLevel != null ? `${helmet.batteryLevel}%` : '—'}

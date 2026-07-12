@@ -41,16 +41,50 @@ function LiveTelemetry({ telemetry }) {
                   <span className="telemetry-item__value">{entry.heartRate ?? '—'}</span>
                 </div>
                 <div className="telemetry-item__field">
-                  <span className="telemetry-item__label">SpO₂</span>
-                  <span className="telemetry-item__value">{entry.spo2 ?? '—'}%</span>
+                  <span className="telemetry-item__label">Humidity</span>
+                  <span className="telemetry-item__value">{entry.humidity ?? '—'}%</span>
                 </div>
                 <div className="telemetry-item__field">
                   <span className="telemetry-item__label">Temp</span>
                   <span className="telemetry-item__value">{entry.bodyTemperature ?? '—'}°C</span>
                 </div>
                 <div className="telemetry-item__field">
-                  <span className="telemetry-item__label">Gas</span>
-                  <span className="telemetry-item__value">{entry.gasLevel ?? '—'}ppm</span>
+                  <span className="telemetry-item__label">LPG</span>
+                  <span className="telemetry-item__value">{entry.mq6 ?? '—'}</span>
+                </div>
+                <div className="telemetry-item__field">
+                  <span className="telemetry-item__label">CH₄</span>
+                  <span className="telemetry-item__value">{entry.mq4 ?? '—'}</span>
+                </div>
+                <div className="telemetry-item__field">
+                  <span className="telemetry-item__label">H₂</span>
+                  <span className="telemetry-item__value">{entry.mq8 ?? '—'}</span>
+                </div>
+                <div className="telemetry-item__field">
+                  <span className="telemetry-item__label">SOS</span>
+                  <span className="telemetry-item__value" style={{ color: entry.sos ? 'var(--danger)' : 'var(--text-muted)' }}>
+                    {entry.sos ? 'ACTIVE' : '—'}
+                  </span>
+                </div>
+                <div className="telemetry-item__field">
+                  <span className="telemetry-item__label">GW RSSI</span>
+                  <span className="telemetry-item__value">{entry.gatewayRSSI ?? '—'}</span>
+                </div>
+                <div className="telemetry-item__field">
+                  <span className="telemetry-item__label">RL RSSI</span>
+                  <span className="telemetry-item__value">{entry.relayRSSI ?? '—'}</span>
+                </div>
+                <div className="telemetry-item__field">
+                  <span className="telemetry-item__label">GW Dist</span>
+                  <span className="telemetry-item__value">{entry.gatewayDistance != null ? `${entry.gatewayDistance.toFixed(1)}m` : '—'}</span>
+                </div>
+                <div className="telemetry-item__field">
+                  <span className="telemetry-item__label">RL Dist</span>
+                  <span className="telemetry-item__value">{entry.relayDistance != null ? `${entry.relayDistance.toFixed(1)}m` : '—'}</span>
+                </div>
+                <div className="telemetry-item__field">
+                  <span className="telemetry-item__label">Latency</span>
+                  <span className="telemetry-item__value">{entry.latency != null ? `${entry.latency}ms` : '—'}</span>
                 </div>
               </div>
             </div>

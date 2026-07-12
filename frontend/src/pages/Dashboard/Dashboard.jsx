@@ -3,6 +3,7 @@ import PageHeader from '../../components/layout/PageHeader/PageHeader';
 import MetricCards from '../../components/dashboard/MetricCards/MetricCards';
 import HelmetTable from '../../components/dashboard/HelmetTable/HelmetTable';
 import LiveTelemetry from '../../components/dashboard/LiveTelemetry/LiveTelemetry';
+import SignalPanel from '../../components/dashboard/SignalPanel/SignalPanel';
 import AlertItem from '../../components/alerts/AlertItem';
 import EmergencyItem from '../../components/emergency/EmergencyItem';
 import { Skeleton, SkeletonCards, SkeletonTable } from '../../components/common/Skeleton';
@@ -82,6 +83,8 @@ export default function Dashboard() {
               ) : (
                 <LiveTelemetry telemetry={latestTelemetry} />
               )}
+
+              <SignalPanel helmets={liveData} />
 
               {/* Activity Feed */}
               <div className="activity-feed" style={{ marginTop: 24 }}>
