@@ -2020,7 +2020,7 @@ ul, ol {
 
   .sidebar__link {
     justify-content: center;
-    padding: 9px;
+    padding: 12px;
   }
 
   .sidebar__link--active::before {
@@ -2030,6 +2030,10 @@ ul, ol {
   .sidebar__user {
     justify-content: center;
     padding: var(--space-2);
+  }
+
+  .sidebar__footer {
+    display: none;
   }
 
   .app-layout__main {
@@ -2063,6 +2067,74 @@ ul, ol {
   .telemetry-item__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* fix: icon button touch targets */
+  .navbar__icon-btn,
+  .sidebar__collapse-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .navbar__profile {
+    padding: 0;
+  }
+
+  /* fix: table header wrapping */
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .table-header__right {
+    flex-wrap: wrap;
+  }
+
+  .table-search {
+    width: 100%;
+  }
+
+  .table-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 12px;
+  }
+
+  /* fix: date filter full-width buttons */
+  .date-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .date-filter__field {
+    width: 100%;
+  }
+
+  .date-filter__input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .date-filter .btn {
+    justify-content: center;
+    padding: 10px 16px;
+  }
+
+  /* fix: page toolbar */
+  .page-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .page-toolbar__right {
+    justify-content: flex-end;
+  }
+
+  /* fix: chart cards stack properly */
+  .chart-card__pies {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2094,6 +2166,10 @@ ul, ol {
   }
 
   .navbar__connection {
+    display: none;
+  }
+
+  .navbar__divider {
     display: none;
   }
 }

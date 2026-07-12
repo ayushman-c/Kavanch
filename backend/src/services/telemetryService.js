@@ -3,19 +3,57 @@ const helmetService = require('./helmetService');
 const { eventBus, EVENTS } = require('../events/eventBus');
 const ApiError = require('../utils/ApiError');
 const { HTTP_STATUS } = require('../constants');
+const logger = require('../utils/logger');
 
 const createTelemetry = async (telemetryData) => {
-  const { helmetId, batteryLevel, packetNumber } = telemetryData;
   const startTime = Date.now();
+
+  /* Normalize ESP32 field names */
+  const rawId = telemetryData.helmetId || telemetryData.helmetID;
+  const helmetId = String(rawId).trim();
+  const batteryLevel = telemetryData.batteryLevel ?? null;
+  const packetNumber = telemetryData.packetNumber || telemetryData.packet || null;
+  const bodyTemperature = telemetryData.bodyTemperature ?? telemetryData.temperature ?? null;
+  const heartRate = telemetryData.heartRate ?? null;
+  const spo2 = telemetryData.spo2 ?? null;
+  const gasLevel = telemetryData.gasLevel ?? telemetryData.mq6 ?? null;
+  const latitude = telemetryData.latitude ?? null;
+  const longitude = telemetryData.longitude ?? null;
 
   const helmet = await helmetService.getHelmetById(helmetId);
 
   const telemetry = await Telemetry.create({
-    ...telemetryData,
+    helmetId,
+    heartRate,
+    spo2,
+    bodyTemperature,
+    gasLevel,
+    latitude,
+    longitude,
+    batteryLevel,
+    packetNumber,
     receivedAt: new Date(),
     timestamp: telemetryData.timestamp ? new Date(telemetryData.timestamp) : new Date(),
     rawPayload: telemetryData,
-    packetNumber: packetNumber || null,
+    /* ESP32 extra fields */
+    humidity: telemetryData.humidity ?? null,
+    mq6: telemetryData.mq6 ?? null,
+    mq4: telemetryData.mq4 ?? null,
+    mq8: telemetryData.mq8 ?? null,
+    worker: telemetryData.worker || '',
+    status: telemetryData.status || '',
+    sos: telemetryData.sos ? true : false,
+    latency: telemetryData.latency ?? null,
+    packetLoss: telemetryData.packetLoss ?? null,
+    gatewayRSSI: telemetryData.gatewayRSSI ?? null,
+    relayRSSI: telemetryData.relayRSSI ?? null,
+    gatewayDistance: telemetryData.gatewayDistance ?? null,
+    relayDistance: telemetryData.relayDistance ?? null,
+    gatewaySignal: telemetryData.gatewaySignal ?? null,
+    relaySignal: telemetryData.relaySignal ?? null,
+    helmetOnline: telemetryData.helmetOnline ? true : false,
+    relayOnline: telemetryData.relayOnline ? true : false,
+    gatewayOnline: telemetryData.gatewayOnline ? true : false,
   });
 
   telemetry.processingTime = Date.now() - startTime;
@@ -28,6 +66,8 @@ const createTelemetry = async (telemetryData) => {
   }
 
   eventBus.emit(EVENTS.TELEMETRY_STORED, { telemetry });
+
+  logger.info({ helmetId, packetNumber, bodyTemperature, gasLevel, processingTime: telemetry.processingTime }, 'Telemetry received');
 
   return telemetry;
 };

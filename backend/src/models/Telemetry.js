@@ -58,6 +58,25 @@ const telemetrySchema = new mongoose.Schema({
     type: Number,
     default: null,
   },
+  /* ESP32-specific fields */
+  humidity: { type: Number, default: null },
+  mq6: { type: Number, default: null },
+  mq4: { type: Number, default: null },
+  mq8: { type: Number, default: null },
+  worker: { type: String, default: '' },
+  status: { type: String, default: '' },
+  sos: { type: Boolean, default: false },
+  latency: { type: Number, default: null },
+  packetLoss: { type: Number, default: null },
+  gatewayRSSI: { type: Number, default: null },
+  relayRSSI: { type: Number, default: null },
+  gatewayDistance: { type: Number, default: null },
+  relayDistance: { type: Number, default: null },
+  gatewaySignal: { type: Number, default: null },
+  relaySignal: { type: Number, default: null },
+  helmetOnline: { type: Boolean, default: false },
+  relayOnline: { type: Boolean, default: false },
+  gatewayOnline: { type: Boolean, default: false },
 });
 
 telemetrySchema.index({ helmetId: 1, timestamp: -1 });

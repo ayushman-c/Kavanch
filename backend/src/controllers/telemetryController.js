@@ -4,10 +4,8 @@ const telemetryService = require('../services/telemetryService');
 const { HTTP_STATUS } = require('../constants');
 
 const createTelemetry = asyncHandler(async (req, res) => {
-  const telemetry = await telemetryService.createTelemetry(req.body);
-  res.status(HTTP_STATUS.CREATED).json(
-    new ApiResponse(HTTP_STATUS.CREATED, 'Telemetry stored successfully', telemetry)
-  );
+  await telemetryService.createTelemetry(req.body);
+  res.status(200).end();
 });
 
 const getLatestTelemetry = asyncHandler(async (req, res) => {

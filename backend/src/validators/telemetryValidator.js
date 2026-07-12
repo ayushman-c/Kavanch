@@ -2,11 +2,12 @@ const ApiError = require('../utils/ApiError');
 const { HTTP_STATUS } = require('../constants');
 
 const validateTelemetry = (req, res, next) => {
-  const { helmetId } = req.body;
+  const { helmetId, helmetID } = req.body;
+  const id = helmetId || helmetID;
 
   const errors = [];
 
-  if (!helmetId || typeof helmetId !== 'string' || helmetId.trim().length === 0) {
+  if (id === null || id === undefined || (typeof id === 'string' && id.trim().length === 0)) {
     errors.push('helmetId is required and must be a non-empty string');
   }
 

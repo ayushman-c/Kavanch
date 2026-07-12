@@ -21,8 +21,8 @@ const start = async () => {
   setupTelemetryEvents();
   alertService.startOfflineMonitor();
 
-  server.listen(config.port, () => {
-    logger.info({ port: config.port }, 'Server running');
+  server.listen(config.port, '0.0.0.0', () => {
+    logger.info({ port: config.port, host: '0.0.0.0' }, 'Server running');
   });
 
   const gracefulShutdown = async (signal) => {
